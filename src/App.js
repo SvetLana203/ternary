@@ -1,25 +1,22 @@
-import logo from './logo.svg';
+import { Component } from 'react';
 import './App.css';
+import Tomato from './Tomato';
+import Avocado from './Avocado';
 
-function App() {
+export class App extends Component {
+
+  state = {
+    show: true
+  }
+  render() {
+    const btnText = this.state.show ? "TOMATO" : "AVOCADO"
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+    <p>{this.state.show ? <Avocado/> : <Tomato/>}</p>
+    <button onClick={() => {this.setState({show: !this.state.show})}}>{btnText}</button>
     </div>
   );
+}
 }
 
 export default App;
